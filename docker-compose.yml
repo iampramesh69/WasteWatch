@@ -1,0 +1,39 @@
+services:
+  wastewatch:
+    build: .
+    container_name: wastewatch
+    expose:
+      - "3000"
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      ADMIN_EMAIL: ${ADMIN_EMAIL:?Set ADMIN_EMAIL in .env}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Set ADMIN_PASSWORD in .env}
+      SESSION_SECRET: ${SESSION_SECRET:?Set SESSION_SECRET in .env}
+    volumes:
+      - wastewatch_data:/app/data
+      - wastewatch_uploads:/app/uploads
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2
+    container_name: wastewatch-caddy
+    restart: unless-stopped
+    environment:
+      DOMAIN: ${DOMAIN:?Set DOMAIN in .env}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - wastewatch
+
+volumes:
+  wastewatch_data:
+  wastewatch_uploads:
+  caddy_data:
+  caddy_config:

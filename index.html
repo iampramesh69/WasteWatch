@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101310" />
+    <title>WasteWatch — Community cleanup tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="WasteWatch home">
+          <span class="brand-mark">W<span>W</span></span>
+          <span
+            ><strong>WasteWatch</strong><small>COMMUNITY CLEANUP</small></span
+          >
+        </a>
+        <div class="nav-label">WORKSPACE</div>
+        <nav id="main-nav" aria-label="Main navigation">
+          <button class="nav-item active" data-page="dashboard">
+            <span>▦</span> Dashboard
+          </button>
+          <button class="nav-item" data-page="report">
+            <span>＋</span> Report garbage
+          </button>
+          <button class="nav-item" data-page="reports">
+            <span>☷</span> All reports <b id="nav-count">0</b>
+          </button>
+          <button class="nav-item" data-page="hotspots">
+            <span>⌖</span> Hotspots & prevention
+          </button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="storage-note">
+            <span class="status-dot"></span>
+            <div>
+              <strong>Local demo storage</strong
+              ><small>Saved in this browser only</small>
+            </div>
+          </div>
+          <p>
+            WasteWatch helps communities track waste reports and cleanup
+            progress.
+          </p>
+          <span class="version">WastWatch · v1.0</span>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="mobile-brand">
+            <span class="brand-mark">W<span>W</span></span
+            ><strong>WasteWatch</strong>
+          </div>
+          <div class="crumb">
+            <span>Workspace</span><span class="crumb-slash">/</span
+            ><strong id="page-crumb">Dashboard</strong>
+          </div>
+          <div class="top-actions">
+            <span class="demo-pill"><span></span> DEMO MODE</span
+            ><button
+              class="icon-button"
+              id="load-demo-top"
+              title="Load simulated demo incidents"
+              aria-label="Load demo incidents"
+            >
+              ↻
+            </button>
+          </div>
+        </header>
+
+        <section class="page active" id="page-dashboard">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">
+                COMMUNITY IMPACT <span class="eyebrow-line"></span>
+              </div>
+              <h1>Waste overview<span class="green-dot">.</span></h1>
+              <p class="subheading">
+                Small actions. Cleaner neighbourhoods. Measurable progress.
+              </p>
+            </div>
+            <button class="btn btn-primary" data-go="report">
+              <span>＋</span> New report
+            </button>
+          </div>
+          <div class="stats-grid">
+            <article class="stat-card">
+              <div class="stat-top">
+                <span>Total incidents</span><span class="stat-icon">▦</span>
+              </div>
+              <div class="stat-value" id="stat-total">0</div>
+              <div class="stat-foot">Reports logged in this browser</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top">
+                <span>Needs attention</span
+                ><span class="stat-icon amber">◷</span>
+              </div>
+              <div class="stat-value" id="stat-open">0</div>
+              <div class="stat-foot">
+                <span class="tiny-dot red"></span> Open or pending cleanup
+              </div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top">
+                <span>Verified cleanups</span
+                ><span class="stat-icon green">✓</span>
+              </div>
+              <div class="stat-value" id="stat-verified">0</div>
+              <div class="stat-foot">Marked verified in demo review</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top">
+                <span>Recurring hotspots</span
+                ><span class="stat-icon red">⌖</span>
+              </div>
+              <div class="stat-value" id="stat-hotspots">0</div>
+              <div class="stat-foot">Locations with 2+ reports</div>
+            </article>
+          </div>
+          <div class="dashboard-grid">
+            <section class="panel recent-panel">
+              <div class="panel-heading">
+                <div>
+                  <h2>Recent reports</h2>
+                  <p>Latest community observations</p>
+                </div>
+                <button class="text-button" data-go="reports">
+                  View all reports <span>→</span>
+                </button>
+              </div>
+              <div id="recent-list" class="report-list"></div>
+            </section>
+            <section class="panel workflow-panel">
+              <div class="panel-heading">
+                <div>
+                  <h2>How it works</h2>
+                  <p>From report to prevention</p>
+                </div>
+              </div>
+              <div class="workflow-step">
+                <span class="step-num">01</span>
+                <div>
+                  <strong>Report garbage</strong>
+                  <p>Add a photo, category and location.</p>
+                </div>
+                <span class="step-check">✓</span>
+              </div>
+              <div class="workflow-step">
+                <span class="step-num">02</span>
+                <div>
+                  <strong>Track the response</strong>
+                  <p>Update status and attach cleanup proof.</p>
+                </div>
+                <span class="step-check">✓</span>
+              </div>
+              <div class="workflow-step">
+                <span class="step-num">03</span>
+                <div>
+                  <strong>Spot recurrence</strong>
+                  <p>Find places where reports keep returning.</p>
+                </div>
+                <span class="step-check">✓</span>
+              </div>
+              <div class="workflow-step">
+                <span class="step-num">04</span>
+                <div>
+                  <strong>Prevent the next pile</strong>
+                  <p>Use simple rules to suggest next actions.</p>
+                </div>
+                <span class="step-check">✓</span>
+              </div>
+              <div class="note-box">
+                <span>ⓘ</span>
+                <p>
+                  Hotspots and prevention advice are rule-based demo insights,
+                  not AI predictions.
+                </p>
+              </div>
+            </section>
+          </div>
+          <section class="panel impact-panel">
+            <div class="impact-copy">
+              <span class="eyebrow">THE GOAL</span>
+              <h2>Clean the spot.<br /><span>Keep it clean.</span></h2>
+              <p>
+                Tracking repeat incidents helps communities move beyond one-time
+                cleanups and investigate why waste returns.
+              </p>
+            </div>
+            <div class="impact-art" aria-hidden="true">
+              <div class="art-ring ring-one"></div>
+              <div class="art-ring ring-two"></div>
+              <div class="art-leaf">✳</div>
+              <div class="art-ground"></div>
+              <div class="art-sprout">♧</div>
+            </div>
+          </section>
+        </section>
+
+        <section class="page" id="page-report">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">
+                COMMUNITY INPUT <span class="eyebrow-line"></span>
+              </div>
+              <h1>Report garbage<span class="green-dot">.</span></h1>
+              <p class="subheading">
+                Share what you saw so the community can take action.
+              </p>
+            </div>
+          </div>
+          <div class="form-layout">
+            <form class="panel report-form" id="report-form">
+              <div class="form-section-title">
+                <span class="section-icon">01</span>
+                <div>
+                  <h2>Incident details</h2>
+                  <p>Fields marked * are required.</p>
+                </div>
+              </div>
+              <label class="upload-zone" for="report-photo"
+                ><span class="upload-icon">↑</span
+                ><strong>Upload a photograph</strong
+                ><span>Choose an image from your device · optional</span
+                ><input id="report-photo" type="file" accept="image/*" /><span
+                  class="upload-preview"
+                  id="upload-preview"
+                ></span
+              ></label>
+              <div class="form-row">
+                <label
+                  >Garbage category *<select id="category" required>
+                    <option value="">Choose a category</option>
+                    <option>Mixed garbage</option>
+                    <option>Overflowing bin</option>
+                    <option>Plastic waste</option>
+                    <option>Construction debris</option>
+                    <option>Organic waste</option>
+                    <option>Electronic waste</option>
+                    <option>Other</option>
+                  </select></label
+                ><label
+                  >Report date *<input id="report-date" type="date" required
+                /></label>
+              </div>
+              <label
+                >Location *<input
+                  id="location"
+                  type="text"
+                  placeholder="e.g. Near City Park, Gate 2"
+                  maxlength="120"
+                  required
+                /><small class="field-hint"
+                  >Use a consistent place name to help identify repeat
+                  incidents.</small
+                ></label
+              >
+              <label
+                >Short description *<textarea
+                  id="description"
+                  rows="4"
+                  maxlength="500"
+                  placeholder="What did you notice? Add helpful details..."
+                  required
+                ></textarea
+                ><small class="field-hint char-count" id="char-count"
+                  >0 / 500</small
+                ></label
+              >
+              <div class="form-actions">
+                <button class="btn btn-primary" type="submit">
+                  Submit report <span>→</span></button
+                ><button class="btn btn-quiet" type="reset">Reset form</button>
+              </div>
+              <div
+                class="form-message"
+                id="form-message"
+                role="status"
+                aria-live="polite"
+              ></div>
+            </form>
+            <aside class="panel form-aside">
+              <div class="aside-symbol">⌖</div>
+              <h3>Make a useful report</h3>
+              <p>
+                A clear location and a short description make it easier to
+                compare reports over time.
+              </p>
+              <ul>
+                <li><span>✓</span> Choose the closest category</li>
+                <li>
+                  <span>✓</span> Enter the same location name for the same place
+                </li>
+                <li>
+                  <span>✓</span> Avoid including faces or private details in
+                  photos
+                </li>
+              </ul>
+              <div class="privacy-note">
+                <span>♧</span>
+                <p>
+                  <strong>Your demo data stays here.</strong><br />Reports are
+                  stored in this browser, not sent to a server.
+                </p>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="page" id="page-reports">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">
+                INCIDENT LOG <span class="eyebrow-line"></span>
+              </div>
+              <h1>All reports<span class="green-dot">.</span></h1>
+              <p class="subheading">
+                Review reports, update status and record cleanup evidence.
+              </p>
+            </div>
+            <button class="btn btn-primary" data-go="report">
+              ＋ New report
+            </button>
+          </div>
+          <div class="filter-bar">
+            <div class="search-wrap">
+              <span>⌕</span
+              ><input
+                id="search-reports"
+                type="search"
+                placeholder="Search ID, location, category..."
+              />
+            </div>
+            <select id="filter-status" aria-label="Filter by status">
+              <option value="all">All statuses</option>
+              <option>Reported</option>
+              <option>In progress</option>
+              <option>Cleaned</option></select
+            ><select id="filter-category" aria-label="Filter by category">
+              <option value="all">All categories</option>
+              <option>Mixed garbage</option>
+              <option>Overflowing bin</option>
+              <option>Plastic waste</option>
+              <option>Construction debris</option>
+              <option>Organic waste</option>
+              <option>Electronic waste</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div id="reports-grid" class="reports-grid"></div>
+          <div class="empty-state hidden" id="reports-empty">
+            <div class="empty-icon">▤</div>
+            <h3>No reports found</h3>
+            <p>Try changing your filters or add the first incident.</p>
+            <button class="btn btn-primary" data-go="report">
+              ＋ Create a report
+            </button>
+          </div>
+        </section>
+
+        <section class="page" id="page-hotspots">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">
+                PATTERNS & ACTION <span class="eyebrow-line"></span>
+              </div>
+              <h1>Hotspots & prevention<span class="green-dot">.</span></h1>
+              <p class="subheading">
+                Use repeat reports to decide where a human inspection may help.
+              </p>
+            </div>
+            <span class="rule-pill">RULE-BASED INSIGHTS</span>
+          </div>
+          <div class="hotspot-summary">
+            <div>
+              <span class="summary-label">Locations flagged</span
+              ><strong id="hotspot-total">0</strong
+              ><small>Locations with repeated reports</small>
+            </div>
+            <div class="summary-divider"></div>
+            <div>
+              <span class="summary-label">Returns after verified cleanup</span
+              ><strong id="return-total">0</strong
+              ><small>Needs local follow-up</small>
+            </div>
+            <div class="summary-icon">⌖</div>
+          </div>
+          <div class="section-heading">
+            <div>
+              <h2>Possible recurring hotspots</h2>
+              <p>Locations are grouped by their manually entered name.</p>
+            </div>
+            <span class="count-label" id="hotspot-count-label"
+              >0 locations</span
+            >
+          </div>
+          <div id="hotspots-list" class="hotspots-list"></div>
+          <div class="method-note">
+            <span>ⓘ</span>
+            <div>
+              <strong>How recurrence is detected</strong>
+              <p>
+                Reports with the same location name (ignoring capital letters
+                and extra spaces) are grouped. Two or more reports at that
+                location create a possible hotspot. This is a simple rule, not a
+                map-based or AI detection system.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <span>WasteWatch <span class="footer-dot">•</span> Hackathon</span
+          ><span
+            >Built for cleaner communities
+            <span class="footer-heart">♥</span></span
+          >
+        </footer>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="modal-backdrop hidden" id="modal-backdrop">
+      <section
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <div class="modal-head">
+          <div>
+            <span class="eyebrow">INCIDENT DETAILS</span>
+            <h2 id="modal-title">Report details</h2>
+            <p id="modal-id"></p>
+          </div>
+          <button
+            class="icon-button close-modal"
+            aria-label="Close report details"
+          >
+            ×
+          </button>
+        </div>
+        <div id="modal-content"></div>
+      </section>
+    </div>
+    <script src="storage.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

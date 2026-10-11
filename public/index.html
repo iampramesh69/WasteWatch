@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#0c110e" />
+    <title>WasteWatch | Dashboard</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body data-page="dashboard">
+    <div id="site-nav"></div>
+    <main class="main">
+      <header class="topbar">
+        <div class="crumb">
+          <span>Workspace</span><span>/</span
+          ><strong id="page-crumb">Dashboard</strong>
+        </div>
+        <div class="top-actions">
+          <span class="api-pill" id="api-status">Checking API</span
+          ><button class="btn btn-quiet" data-load-demo>Load demo data</button>
+        </div>
+      </header>
+      <section>
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">COMMUNITY IMPACT</div>
+            <h1>Waste overview<span class="green-dot">.</span></h1>
+            <p class="subheading">
+              Small actions. Cleaner neighbourhoods. Measurable progress.
+            </p>
+          </div>
+          <a class="btn btn-primary" href="/report.html">＋ New report</a>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-top">
+              Total reports <span class="stat-icon">▦</span>
+            </div>
+            <div class="stat-value" id="stat-total">—</div>
+            <div class="stat-foot">Saved in the database</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-top">
+              Needs attention <span class="stat-icon amber">◷</span>
+            </div>
+            <div class="stat-value" id="stat-open">—</div>
+            <div class="stat-foot">Reported or in progress</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-top">Cleaned <span class="stat-icon">✓</span></div>
+            <div class="stat-value" id="stat-cleaned">—</div>
+            <div class="stat-foot">Marked as cleaned</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-top">
+              Repeat locations <span class="stat-icon red">⌖</span>
+            </div>
+            <div class="stat-value" id="stat-hotspots">—</div>
+            <div class="stat-foot">Two or more reports</div>
+          </article>
+        </div>
+        <div class="dashboard-grid">
+          <section class="panel">
+            <div class="panel-heading">
+              <div>
+                <h2>Recent reports</h2>
+                <p>Latest community observations</p>
+              </div>
+              <a class="text-button" href="/reports.html">View all →</a>
+            </div>
+            <div class="report-list" id="recent-list">
+              <p class="field-hint">Loading reports…</p>
+            </div>
+          </section>
+          <section class="panel">
+            <div class="panel-heading">
+              <div>
+                <h2>How it works</h2>
+                <p>From report to prevention</p>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <span class="step-num">01</span>
+              <div>
+                <strong>Report waste</strong>
+                <p>Add a category, date, location and optional image.</p>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <span class="step-num">02</span>
+              <div>
+                <strong>Track the response</strong>
+                <p>
+                  Authorized admins update cleanup status and attach an
+                  after-cleanup proof photo.
+                </p>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <span class="step-num">03</span>
+              <div>
+                <strong>Spot recurrence</strong>
+                <p>Compare reports at the same location.</p>
+              </div>
+            </div>
+            <div class="note-box">
+              <span>ⓘ</span>
+              <p>
+                Hotspots are rule-based indicators, not AI predictions or proof
+                of illegal dumping.
+              </p>
+            </div>
+          </section>
+        </div>
+        <section class="panel impact-panel">
+          <div class="impact-copy">
+            <span class="eyebrow">THE GOAL</span>
+            <h2>Clean the spot.<br /><span>Keep it clean.</span></h2>
+            <p>
+              Track repeat incidents and investigate why waste keeps returning.
+            </p>
+          </div>
+          <div class="impact-art" aria-hidden="true">
+            <div class="art-ring ring-one"></div>
+            <div class="art-ring ring-two"></div>
+            <div class="art-leaf">✳</div>
+            <div class="art-ground"></div>
+            <div class="art-sprout">♧</div>
+          </div>
+        </section>
+        <p class="footer-note">
+          Citizens can submit and delete their own reports. Admin-only cleanup
+          controls are protected by server-side role checks.
+        </p>
+      </section>
+    </main>
+    <script type="module" src="/js/pages/dashboard.js"></script>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#0c110e" />
+    <title>WasteWatch | Login</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body data-page="login">
+    <div id="site-nav"></div>
+    <main class="main auth-main">
+      <section class="auth-card panel">
+        <div class="eyebrow" id="auth-mode-label">Welcome back</div>
+        <h1 id="auth-title">Log in to WasteWatch.</h1>
+        <p class="subheading" id="auth-subtitle">
+          Sign in to report waste or access your authorized dashboard.
+        </p>
+        <form id="auth-form" class="report-form auth-form">
+          <label id="name-field" class="hidden"
+            >Full name<input
+              id="auth-name"
+              name="name"
+              autocomplete="name"
+              maxlength="70"
+              placeholder="Your name" /></label
+          ><label
+            >Email address<input
+              id="auth-email"
+              name="email"
+              type="email"
+              autocomplete="username"
+              required
+              maxlength="190"
+              placeholder="you@example.com" /></label
+          ><label
+            >Password<input
+              id="auth-password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+              minlength="8"
+              maxlength="200"
+              placeholder="At least 8 characters" /></label
+          ><button class="btn btn-primary" id="auth-submit" type="submit">
+            Log in →
+          </button>
+          <div
+            class="form-message"
+            id="auth-message"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </form>
+        <a href="#" id="switch-mode" class="inline-link auth-switch"
+          >New here? Create a citizen account</a
+        >
+        <div class="note-box">
+          <span>ⓘ</span>
+          <p>
+            Citizen accounts cannot grant themselves admin access. Admin
+            accounts are configured by the site operator.
+          </p>
+        </div>
+        <a class="text-button" href="/index.html">← Back to overview</a>
+      </section>
+    </main>
+    <script type="module" src="/js/pages/login.js"></script>
+  </body>
+</html>

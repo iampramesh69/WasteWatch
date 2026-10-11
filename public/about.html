@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>WasteWatch | About the project</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body data-page="about">
+    <div id="site-nav"></div>
+    <main class="main">
+      <header class="topbar">
+        <div class="crumb">
+          Workspace <span>/</span><strong id="page-crumb">About</strong>
+        </div>
+        <span class="api-pill">architecture</span>
+      </header>
+      <div class="page-heading">
+        <div>
+          <div class="eyebrow">PROJECT OVERVIEW</div>
+          <h1>About WasteWatch<span class="green-dot">.</span></h1>
+          <p class="subheading">
+            A community reporting for tracking waste incidents and cleanup
+            progress.
+          </p>
+        </div>
+      </div>
+      <section class="panel">
+        <h2>What problem does it solve?</h2>
+        <p class="subheading" style="max-width: 800px; margin-top: 10px">
+          One-time cleanups do not always stop waste from returning. WasteWatch
+          creates a simple incident log so a community can track categories,
+          locations, response status and repeated reports in one place.
+        </p>
+      </section>
+      <div class="about-grid">
+        <article class="about-card">
+          <div class="about-icon">＋</div>
+          <h3>1. Report</h3>
+          <p>
+            Submit a category, date, location, description and optional photo.
+            The API validates required fields and stores the report in SQLite.
+          </p>
+        </article>
+        <article class="about-card">
+          <div class="about-icon">✓</div>
+          <h3>2. Respond</h3>
+          <p>
+            Search reports and update a report to Reported, In progress or
+            Cleaned. Photo upload is limited to 5 MB.
+          </p>
+        </article>
+        <article class="about-card">
+          <div class="about-icon">⌖</div>
+          <h3>3. Prevent</h3>
+          <p>
+            Group repeated location names and show a rule-based suggestion for
+            human follow-up.
+          </p>
+        </article>
+      </div>
+      <section class="panel" style="margin-top: 18px">
+        <h2>How the project is structured</h2>
+        <p class="subheading" style="margin: 8px 0 18px">
+          Each layer has one job. The browser does not connect directly to the
+          database.
+        </p>
+        <div class="architecture">
+          <div>
+            <strong>Frontend</strong>
+            <p>
+              Separate HTML pages + CSS + JavaScript ES modules. Sends HTTP
+              requests using <code>fetch()</code>.
+            </p>
+          </div>
+          <div>
+            <strong>Backend API</strong>
+            <p>
+              Node.js + Express validates requests, accepts image uploads and
+              exposes <code>/api/reports</code> routes.
+            </p>
+          </div>
+          <div>
+            <strong>Database + files</strong>
+            <p>
+              SQLite stores report records in
+              <code>data/wastewatch.sqlite</code>; images are saved under
+              <code>uploads/</code>.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="panel">
+        <h2>AWS deployment path</h2>
+        <p class="subheading" style="margin: 8px 0 12px">
+          This project is ready to run locally. AWS resources are not created
+          automatically.
+        </p>
+        <ol class="subheading" style="line-height: 2">
+          <li>
+            For a first demonstration, deploy the Node app to an EC2 instance
+            and keep the SQLite database and uploads on persistent storage.
+          </li>
+          <li>
+            For a multi-user production app, move report records to Amazon RDS
+            or DynamoDB and photos to a private Amazon S3 bucket.
+          </li>
+          <li>
+            Add authentication/roles, HTTPS, backups, validation, rate limiting
+            and an AWS budget before inviting public users.
+          </li>
+        </ol>
+      </section>
+      <p class="footer-note">
+        Security limitation: this has no authentication or role permissions. Do
+        not expose it publicly with real personal data until access control and
+        deployment hardening are added.
+      </p>
+    </main>
+    <script type="module" src="/js/pages/about.js"></script>
+  </body>
+</html>

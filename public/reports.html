@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>WasteWatch | All reports</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body data-page="reports">
+    <div id="site-nav"></div>
+    <main class="main">
+      <header class="topbar">
+        <div class="crumb">
+          Workspace <span>/</span><strong id="page-crumb">All reports</strong>
+        </div>
+        <div class="top-actions">
+          <button class="btn btn-quiet" data-load-demo>Load demo data</button
+          ><button class="btn btn-quiet" data-clear-demo>
+            Clear demo data
+          </button>
+        </div>
+      </header>
+      <div class="page-heading">
+        <div>
+          <div class="eyebrow">INCIDENT LOG</div>
+          <h1>All reports<span class="green-dot">.</span></h1>
+          <p class="subheading">
+            Search incidents and update their cleanup status.
+          </p>
+        </div>
+        <a class="btn btn-primary" href="/report.html">＋ New report</a>
+      </div>
+      <div class="filter-bar">
+        <div class="search-wrap">
+          <span>⌕</span
+          ><input
+            id="search-reports"
+            type="search"
+            placeholder="Search ID, location, category…"
+            aria-label="Search reports"
+          />
+        </div>
+        <select id="filter-status" aria-label="Filter by status">
+          <option value="all">All statuses</option>
+          <option>Reported</option>
+          <option>In progress</option>
+          <option>Cleaned</option></select
+        ><select id="filter-category" aria-label="Filter by category">
+          <option value="all">All categories</option>
+          <option>Mixed garbage</option>
+          <option>Overflowing bin</option>
+          <option>Plastic waste</option>
+          <option>Construction debris</option>
+          <option>Organic waste</option>
+          <option>Electronic waste</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="reports-grid" id="reports-grid"></div>
+      <div class="empty-state hidden" id="reports-empty">
+        <div class="empty-icon">▤</div>
+        <h3>No reports found</h3>
+        <p>Try another filter or create the first report.</p>
+        <a class="btn btn-primary" href="/report.html">＋ Create a report</a>
+      </div>
+      <p class="footer-note">
+        Tip: use a consistent location name. Hotspot matching is text-based and
+        does not use GPS.
+      </p>
+    </main>
+    <script type="module" src="/js/pages/reports.js"></script>
+  </body>
+</html>

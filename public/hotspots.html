@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>WasteWatch | Hotspots</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body data-page="hotspots">
+    <div id="site-nav"></div>
+    <main class="main">
+      <header class="topbar">
+        <div class="crumb">
+          Workspace <span>/</span><strong id="page-crumb">Hotspots</strong>
+        </div>
+        <span class="api-pill">Rule-based insights</span>
+      </header>
+      <div class="page-heading">
+        <div>
+          <div class="eyebrow">PATTERNS & ACTION</div>
+          <h1>Hotspots & prevention<span class="green-dot">.</span></h1>
+          <p class="subheading">
+            Find locations with repeat reports and review practical next steps.
+          </p>
+        </div>
+        <button class="btn btn-quiet" data-load-demo>Load demo data</button>
+      </div>
+      <div class="stats-grid">
+        <article class="stat-card">
+          <div class="stat-top">
+            Repeat locations <span class="stat-icon">⌖</span>
+          </div>
+          <div class="stat-value" id="hotspot-total">—</div>
+          <div class="stat-foot">At least two reports per location</div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top">
+            Reports reviewed <span class="stat-icon">▦</span>
+          </div>
+          <div class="stat-value" id="report-total">—</div>
+          <div class="stat-foot">All reports in the database</div>
+        </article>
+      </div>
+      <div class="info-box">
+        <span>ⓘ</span>
+        <p>
+          A hotspot here means multiple reports share a normalized text
+          location. It does not prove that reports refer to the exact same GPS
+          point or that a person broke a rule.
+        </p>
+      </div>
+      <div
+        id="hotspots-list"
+        class="hotspot-grid"
+        style="margin-top: 18px"
+      ></div>
+      <p class="footer-note">
+        Prevention ideas are simple rules based on report categories and counts.
+        A human should verify each site before taking action.
+      </p>
+    </main>
+    <script type="module" src="/js/pages/hotspots.js"></script>
+  </body>
+</html>

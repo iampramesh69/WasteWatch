@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>WasteWatch | Report waste</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+  </head>
+  <body data-page="report">
+    <div id="site-nav"></div>
+    <main class="main">
+      <header class="topbar">
+        <div class="crumb">
+          Workspace <span>/</span><strong id="page-crumb">Report waste</strong>
+        </div>
+        <span class="api-pill">API connected</span>
+      </header>
+      <div class="page-heading">
+        <div>
+          <div class="eyebrow">COMMUNITY INPUT</div>
+          <h1>Report waste<span class="green-dot">.</span></h1>
+          <p class="subheading">
+            Share what you saw so the community can take action. You must be
+            logged in to submit a report.
+          </p>
+        </div>
+      </div>
+      <div class="form-layout">
+        <form
+          class="panel report-form"
+          id="report-form"
+          enctype="multipart/form-data"
+        >
+          <div class="form-section-title">
+            <span class="section-icon">01</span>
+            <div>
+              <h2>Incident details</h2>
+              <p>Fields marked * are required.</p>
+            </div>
+          </div>
+          <label class="upload-zone" for="photo"
+            ><span class="upload-icon">↑</span
+            ><strong>Choose a photograph (optional)</strong
+            ><span>JPEG, PNG, WEBP or GIF · maximum 5 MB</span
+            ><input
+              id="photo"
+              name="photo"
+              type="file"
+              accept="image/jpeg,image/png,image/webp,image/gif" /><span
+              id="photo-name"
+              class="upload-preview"
+            ></span
+          ></label>
+          <div class="form-row">
+            <label
+              >Garbage category *<select name="category" required>
+                <option value="">Choose a category</option>
+                <option>Mixed garbage</option>
+                <option>Overflowing bin</option>
+                <option>Plastic waste</option>
+                <option>Construction debris</option>
+                <option>Organic waste</option>
+                <option>Electronic waste</option>
+                <option>Other</option>
+              </select></label
+            ><label
+              >Report date *<input
+                name="date"
+                id="report-date"
+                type="date"
+                required
+            /></label>
+          </div>
+          <label
+            >Location name *<input
+              name="location"
+              id="location-name"
+              type="text"
+              placeholder="e.g. Near City Park, Gate 2"
+              maxlength="120"
+              required
+            /><small class="field-hint"
+              >Enter a recognizable place name. The map pin saves its exact
+              coordinates separately.</small
+            ></label
+          >
+          <section
+            class="location-picker"
+            aria-labelledby="location-picker-title"
+          >
+            <div class="location-picker-head">
+              <div>
+                <h3 id="location-picker-title">Pin the waste location</h3>
+                <p>Click the map to drop a pin, or use your device GPS.</p>
+              </div>
+              <button class="btn btn-quiet" type="button" id="use-my-location">
+                ◎ Use my location
+              </button>
+            </div>
+            <div
+              id="report-location-map"
+              class="leaflet-map"
+              role="application"
+              aria-label="Choose waste report coordinates on the map"
+            ></div>
+            <input type="hidden" name="latitude" id="report-latitude" /><input
+              type="hidden"
+              name="longitude"
+              id="report-longitude"
+            />
+            <p
+              class="map-status"
+              id="map-status"
+              role="status"
+              aria-live="polite"
+            >
+              No map point selected. You can still submit a report without
+              coordinates.
+            </p>
+          </section>
+          <label
+            >Short description *<textarea
+              name="description"
+              rows="4"
+              maxlength="500"
+              placeholder="What did you notice? Add useful details…"
+              required
+            ></textarea
+            ><small class="field-hint" id="char-count">0 / 500</small></label
+          >
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">
+              Submit report →</button
+            ><button class="btn btn-quiet" type="reset">Reset form</button>
+          </div>
+          <div
+            class="form-message"
+            id="form-message"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </form>
+        <aside class="panel form-aside">
+          <div class="aside-symbol">⌖</div>
+          <h3>Make a useful report</h3>
+          <p>
+            A clear location and short description make it easier to compare
+            incidents over time.
+          </p>
+          <ul>
+            <li><span>✓</span> Choose the closest category</li>
+            <li><span>✓</span> Enter consistent location names</li>
+            <li><span>✓</span> Avoid photos of faces or private details</li>
+          </ul>
+          <div class="privacy-note">
+            <span>♧</span>
+            <p>
+              <strong>Data is stored on the server.</strong><br />This MVP uses
+              a local SQLite database and a local uploads folder.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </main>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script type="module" src="/js/pages/report-form.js"></script>
+  </body>
+</html>

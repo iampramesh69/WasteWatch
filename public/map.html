@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>WasteWatch | Report map</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+  </head>
+  <body data-page="map">
+    <div id="site-nav"></div>
+    <main class="main">
+      <header class="topbar">
+        <div class="crumb">
+          Workspace <span>/</span><strong id="page-crumb">Map</strong>
+        </div>
+        <span class="api-pill">OpenStreetMap · no key</span>
+      </header>
+      <div class="page-heading">
+        <div>
+          <div class="eyebrow">LOCATION VIEW</div>
+          <h1>Waste report map<span class="green-dot">.</span></h1>
+          <p class="subheading">
+            Explore reports that have a saved map point. Older reports without
+            coordinates remain in the report list.
+          </p>
+        </div>
+        <a class="btn btn-primary" href="/report.html">＋ Add report</a>
+      </div>
+      <section class="panel map-page-panel">
+        <div class="map-page-toolbar">
+          <div>
+            <strong id="mapped-count">Loading reports…</strong>
+            <p class="field-hint">
+              Select a marker to view report details. Only reports with
+              coordinates appear here.
+            </p>
+          </div>
+          <button class="btn btn-quiet" type="button" id="refresh-map">
+            Refresh map
+          </button>
+        </div>
+        <div
+          id="all-reports-map"
+          class="leaflet-map leaflet-map-large"
+          role="application"
+          aria-label="Map of waste reports"
+        ></div>
+        <p
+          id="map-page-message"
+          class="map-status"
+          role="status"
+          aria-live="polite"
+        >
+          Loading report locations…
+        </p>
+      </section>
+      <p class="footer-note">
+        Map tiles are provided by OpenStreetMap and require an internet
+        connection. Please follow the public tile usage policy. No API key is
+        used.
+      </p>
+    </main>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script type="module" src="/js/pages/map.js"></script>
+  </body>
+</html>

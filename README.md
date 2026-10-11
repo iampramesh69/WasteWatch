@@ -22,7 +22,7 @@ A modular, multi-page community waste reporting app. The frontend is split into 
 - Docker files for a first deployment on an AWS EC2 instance
 
 ## Accounts and roles
-
+ 
 - Open `http://localhost:3000/login.html` to register a citizen account or log in. New registrations are always `user` accounts; the public registration form cannot create admins.
 - On a fresh local database, a demo admin is created automatically: **`admin@wastewatch.local` / `ChangeMe123!`**. Use this only for local judging/demo; change it before deploying anywhere public.
 - For a deployment, set environment variables before starting the server: `ADMIN_EMAIL`, `ADMIN_PASSWORD`, and a long random `SESSION_SECRET`. Example PowerShell:
